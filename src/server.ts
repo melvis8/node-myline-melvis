@@ -3,6 +3,7 @@
 import express from 'express';
 import compression from 'compression';
 import rateLimit from 'express-rate-limit';
+import morgan from 'morgan';
 
 import {  ONE_HUNDRED,  SIXTY } from './core/constants';
 
@@ -16,5 +17,6 @@ app.use(rateLimit({
   windowMs: SIXTY,
   message: 'Trop de Requete à partir de cette adresse IP '
 }));
+app.use(morgan('dev'));
 
 export default app;
